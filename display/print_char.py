@@ -1,10 +1,11 @@
 import font_atari_4x8 as f
 
-ch = f.font_bitmap["e"]
-for y in range(len(ch)):
+ch = f.font_bitmap["E"]
+
+for x in range(len(ch)):
     line = "|"
-    for x in range(4):
-        if (ch[y] & (1 << (7 - x))) != 0:
+    for y in range(8):
+        if (ch[x] & (1 << (7 - y))) != 0:
             line += "#"
         else:
             line += " "

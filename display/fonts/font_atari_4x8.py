@@ -19,6 +19,23 @@
 ## COPYRIGHT "Copyright 1999 by Thomas A. Fine"
 ## Converted Font Size 4x8
 
+from font import Font
+
+class FontAtariSmall(Font):
+
+    def __init__(self):
+        Font.__init__(self)
+
+    def getWidth(self):
+        return 4
+
+    def getHeight(self):
+        return 8
+
+    def getPixel(self, x, y):
+        return (font_bitmap[self.mChar][x] & (1 << (y)))
+
+
 font_bitmap = {
 " " : [
     #    32 ' ' |01234567|

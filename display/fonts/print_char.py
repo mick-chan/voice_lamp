@@ -1,11 +1,11 @@
-import font_atari_4x8 as f
+from font_atari_4x8 import FontAtariSmall
 
-ch = f.font_bitmap["E"]
-
-for x in range(len(ch)):
+f = FontAtariSmall()
+f.setCharacter("A")
+for y in range(f.getHeight()):
     line = "|"
-    for y in range(8):
-        if (ch[x] & (1 << (7 - y))) != 0:
+    for x in range(f.getWidth()):
+        if f.getPixel(x, y) != 0:
             line += "#"
         else:
             line += " "

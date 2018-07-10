@@ -18,7 +18,7 @@ def main():
         print "Usage: %s <font name> <character>" % (sys.argv[0])
         return
     f = createFont(sys.argv[1])
-    f.setCharacter(sys.argv[2][0])
+    f.setCharacter(sys.argv[2])
     for y in range(f.getHeight()):
         line = "|"
         for x in range(f.getWidth()):

@@ -8,9 +8,10 @@ class InvertLayer(Layer):
     """
 
     def __init__(self, layer):
-        self.mLayer = layer
+        Layer.__init__(self, layer)
 
     def process(self):
+        self.mLayer.process()
         for y in range(self.getHeight()):
             for x in range(self.getWidth()):
                 p = self.mLayer.getPixel(x, y)
@@ -35,7 +36,8 @@ class InvertLayer(Layer):
 def main():
     display = Display()
     invertLayer = InvertLayer(display)
-    invertLayer.process()    
+    invertLayer.process()
+    invertLayer.apply()
     for y in range(invertLayer.getHeight()):
         for x in range(invertLayer.getWidth()):
             if invertLayer.getPixel(x, y) != (255, 255, 255):

@@ -11,7 +11,7 @@ class FontLayer(Layer):
     """
 
     def __init__(self, layer, fontName, ch):
-        self.mLayer = layer
+        Layer.__init__(self, layer)
         if fontName == "atari":
             self.mFont = FontAtariSmall()
         elif fontName == "quarky":
@@ -24,6 +24,7 @@ class FontLayer(Layer):
     def process(self):
         assert(self.mLayer.mWidth == self.mFont.getWidth())
         assert(self.mLayer.mHeight == self.mFont.getHeight())
+        self.mLayer.process()
         for y in range(self.mLayer.mHeight):
             for x in range(self.mLayer.mWidth):
                 if self.mFont.getPixel(x, y) != 0:
@@ -31,6 +32,12 @@ class FontLayer(Layer):
 
     def apply(self):
         self.mLayer.apply()
+
+    def getWidth(self):
+        return self.mLayer.getWidth()
+
+    def getHeight(self):
+        return self.mLayer.getHeight()
 
     def getPixel(self, x, y):
         return self.mLayer.getPixel(x, y)
@@ -45,6 +52,7 @@ def main():
     f.setCharacter("i")
     fontLayer = FontLayer(display, "atari", "i")
     fontLayer.process()
+    fontLayer.apply()
     for y in range(f.getHeight()):
         for x in range(f.getWidth()):
             if f.getPixel(x, y) != 0:

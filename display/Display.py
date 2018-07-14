@@ -1,6 +1,6 @@
 import sys
 from Layer import Layer
-#import unicornhat as uh
+import unicornhat as uh
 
 class Display(Layer):
     """
@@ -10,6 +10,7 @@ class Display(Layer):
 
     def __init__(self):
         Layer.__init__(self, None)
+        uh.set_layout(uh.PHAT)
         self.mWidth = 4
         self.mHeight = 8
         # mValues is a mWidth x mHeight array of tuples formatted
